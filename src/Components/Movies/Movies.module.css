@@ -1,0 +1,29 @@
+.movieWrapper{
+  width: 100%;
+  height: 80vh;
+}
+.movieContent{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+@media (max-width: 1024px) {
+  .movieWrapper{
+    height: 50vh;
+  }
+}
+@media (max-width: 768px) {
+  .movieWrapper{
+    height: 65vh;
+  }
+}
+@media (max-width: 375px) {
+  .movieWrapper{
+    height: 100%;
+  }
+  .movieContent{
+    padding-bottom: 40px;
+  }
+}

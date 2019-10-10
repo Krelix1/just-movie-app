@@ -1,0 +1,31 @@
+.selectedPageNumber{
+  font-weight: bold;
+  font-size: 25px;
+  text-shadow: #ff2129 0px 0px 5px, #ff2129 0px 0px 10px, #ff2129 0px 0px 15px, #ff2129 0px 0px 20px, #ff2129 0px 0px 30px, #ff2129 0px 0px 40px, #ff2129 0px 0px 50px, #ff2129 0px 0px 75px;
+  color: #ffffff;
+  margin: 0 20px;
+
+}
+.pageNumber{
+  font-size: 25px;
+  color: #858585;
+  text-shadow: #851b1b 0px 0px 5px, #851b1b 0px 0px 10px, #851b1b 0px 0px 15px, #851b1b 0px 0px 20px, #851b1b 0px 0px 30px, #851b1b 0px 0px 40px, #851b1b 0px 0px 50px;
+  margin: 0 20px;
+}
+.paginator {
+  width: 50%;
+  height: 50px;
+  margin: 50px auto 0;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .paginator{
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .paginator{
+  }
+}

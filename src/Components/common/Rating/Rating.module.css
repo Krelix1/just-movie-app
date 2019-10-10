@@ -1,0 +1,16 @@
+.star{
+  font-size: 15px;
+  color: #00000073;
+  margin: 0 5px;
+}
+.starList{
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  padding: 0;
+  background-color: #ff212999;
+}
+.checked{
+  color:white;
+  margin: 0 5px;
+}

@@ -1,0 +1,13 @@
+.header {
+  grid-area: h;
+  background-color: #ffffff;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+}
+.logo img{
+height: 70px;
+}
+@media (max-width: 375px) {
+
+}
