@@ -6,10 +6,12 @@ const SET_GENRES = "SET_GENRES";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_PAGE_SIZE = "SET_PAGE_SIZE";
+const SET_MOVIE_BY_ID = "SET_MOVIE_BY_ID";
 
 let initialState = {
     searchingMovie: "",
     movies: [],
+    movieById:{},
     isFetching: false,
     currentPage: 1,
     totalMoviesCount: 0,
@@ -34,6 +36,11 @@ const searchMovieReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentPage: action.page
+            };
+        case SET_MOVIE_BY_ID:
+            return {
+                ...state,
+                movieById: action.movie
             };
         case SET_MOVIES:
             return {
@@ -70,6 +77,9 @@ export const setGenresCreator = (genres) => (
 export const toggleIsFetching = (isFetching) => {
     return {type: TOGGLE_IS_FETCHING, isFetching}
 };
+export const setMovieByIdCreator = (movie) => (
+    {type: SET_MOVIE_BY_ID, movie}
+);
 
 export const searchMovie = (movie) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
@@ -81,6 +91,12 @@ export const setGenres = () => (dispatch) => {
     SearchMovieAPI.getGenres().then(response => {
         dispatch(setGenresCreator(response.data.genres));
     })
+};
+export const setMovieById = (movieId) => async (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    let response = await SearchMovieAPI.getMovieById(movieId);
+    dispatch(setMovieByIdCreator(response.data));
+    dispatch(toggleIsFetching(false));
 };
 export const setPageSize = (pageSize) => (
     {type: SET_PAGE_SIZE, pageSize}

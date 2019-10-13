@@ -1,0 +1,107 @@
+.movie {
+  position: relative;
+  width: 185px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 30px 65px 0 0;
+  padding: 0 5px;
+}
+
+.movie img {
+  width: 185px;
+  height: 278px;
+}
+
+.movieDescription {
+  background: #000000db;
+  color: white;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  visibility: hidden;
+  opacity: 0;
+  height: 278px;
+  cursor: pointer;
+}
+.movie:hover .movieDescription{
+  visibility: visible;
+  opacity: 1;
+}
+
+.movie h3 {
+  font-family: "Segoe Pro Display Bold", sans-serif;
+  font-size: 16px;
+  align-self: center;
+  text-align: center;
+  margin: 10px auto;
+  text-shadow: #ff2129 0px 0px 5px, #ff2129 0px 0px 10px, #ff2129 0px 0px 15px, #ff2129 0px 0px 20px, #ff2129 0px 0px 30px, #ff2129 0px 0px 40px, #ff2129 0px 0px 50px, #ff2129 0px 0px 75px;
+  color: #ffffff;
+  line-height: 27px;
+}
+
+.movieDescription p {
+  font-family: "Segoe Pro Regular", sans-serif;
+  font-size: 16px;
+  margin: 10px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Segoe Pro Display Semibold", sans-serif;
+  font-size: 16px;
+  width: 185px;
+}
+
+.genres{
+  display: flex;
+  flex-wrap: wrap;
+}
+.date,.rate{
+  margin: 10px auto;
+  text-shadow: #ff2129 0px 0px 5px, #ff2129 0px 0px 10px, #ff2129 0px 0px 15px, #ff2129 0px 0px 20px, #ff2129 0px 0px 30px, #ff2129 0px 0px 40px, #ff2129 0px 0px 50px, #ff2129 0px 0px 75px;
+  color: #ffffff;
+  height: 15px;
+  padding: 5px 0;
+  text-align: center;
+  width: 185px;
+}
+.genres{
+  margin: 10px auto;
+  text-shadow: #ffffff 0px 0px 5px, #ffffff 0px 0px 10px, #ffffff 0px 0px 15px, #ffffff 0px 0px 20px, #ffffff 0px 0px 30px, #ffffff 0px 0px 40px, #ffffff 0px 0px 50px, #ffffff 0px 0px 75px;
+  color: #222222;
+  height: max-content;
+  padding: 5px 0;
+  text-align: center;
+  width: 185px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.genre{
+  padding: 5px;
+  margin: 5px;
+}
+@media (max-width: 1080px) {
+  .movie {
+    width: 150px;
+    margin: 20px auto;
+  }
+
+  .movie img {
+    width: 150px;
+    height: 233px;
+  }
+  .movieDescription{
+    height: 233px;
+  }
+}
+@media (max-width: 768px) {
+
+}
+@media (max-width: 375px) {
+
+}
