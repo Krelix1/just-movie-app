@@ -1,46 +1,66 @@
 import {SearchMovieAPI} from "../api/moviedbAPI/Mdb";
 
-const SEARCH_MOVIE = "SEARCH_MOVIE";
 const SET_MOVIES = "SET_MOVIES";
-const SET_GENRES = "SET_GENRES";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
-const SET_PAGE_SIZE = "SET_PAGE_SIZE";
-const SET_MOVIE_BY_ID = "SET_MOVIE_BY_ID";
+const SET_LANGUAGE = "SET_LANGUAGE";
+const SET_FILTERS = "SET_FILTERS";
 
 let initialState = {
-    searchingMovie: "",
     movies: [],
-    movieById:{},
     isFetching: false,
     currentPage: 1,
-    totalMoviesCount: 0,
-    pageSize: 6,
-    genres: []
+    language: "en-US",
+    filters: {
+        dateDown: function (a, b) {
+            return b.release_date.split('-')[0] - a.release_date.split('-')[0] + b.release_date.split('-')[1] - a.release_date.split('-')[1] + b.release_date.split('-')[2] - a.release_date.split('-')[2]
+        },
+        dateUp: function (a, b) {
+            return a.release_date.split('-')[0] - b.release_date.split('-')[0] + a.release_date.split('-')[1] - b.release_date.split('-')[1] + a.release_date.split('-')[2] - b.release_date.split('-')[2]
+        },
+        voteDown: function (a, b) {
+            return b.vote_average - a.vote_average;
+        },
+        voteUp: function (a, b) {
+            return a.vote_average - b.vote_average;
+        },
+        titleDown: function (a, b) {
+            if (a.title > b.title) {
+                return -1;
+            }
+        },
+        titleUp: function (a, b) {
+            if (a.title < b.title) {
+                return -1;
+            }
+        },
+        popularityUp: function (a, b) {
+            return a.popularity - b.popularity;
+        },
+        popularityDown: function (a, b) {
+            return b.popularity - a.popularity;
+        }
+    },
+    currentFilter: ["dateDown"]
 };
 
 const searchMovieReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case SEARCH_MOVIE:
+        case SET_LANGUAGE:
             return {
                 ...state,
-                searchingMovie: action.movies
+                language: action.language
             };
-        case SET_PAGE_SIZE:
+        case SET_FILTERS:
             return {
                 ...state,
-                pageSize: action.pageSize
+                currentFilter: action.filter
             };
         case SET_CURRENT_PAGE:
             return {
                 ...state,
                 currentPage: action.page
-            };
-        case SET_MOVIE_BY_ID:
-            return {
-                ...state,
-                movieById: action.movie
             };
         case SET_MOVIES:
             return {
@@ -53,11 +73,7 @@ const searchMovieReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching
             };
-        case SET_GENRES:
-            return {
-                ...state,
-                genres: action.genres
-            };
+
         default:
             return state;
     }
@@ -66,40 +82,43 @@ const searchMovieReducer = (state = initialState, action) => {
 export const onPageChangeCreator = (page) => (
     {type: SET_CURRENT_PAGE, page}
 );
+export const setCurrentFilters = (filter) => {
+    if (filter===undefined)filter = "dateDown";
+    return {type: SET_FILTERS, filter}
+};
 
 export const setMoviesCreator = (movies) => (
     {type: SET_MOVIES, movies}
 );
-export const setGenresCreator = (genres) => (
-    {type: SET_GENRES, genres}
-);
 
-export const toggleIsFetching = (isFetching) => {
-    return {type: TOGGLE_IS_FETCHING, isFetching}
-};
-export const setMovieByIdCreator = (movie) => (
-    {type: SET_MOVIE_BY_ID, movie}
+export const toggleIsFetching = (isFetching) => (
+    {type: TOGGLE_IS_FETCHING, isFetching}
 );
-
-export const searchMovie = (movie) => async (dispatch) => {
+export const setLanguageSearchCreator = (language) => (
+    {type: SET_LANGUAGE, language}
+);
+export const searchMovie = (movie, lang) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
-    let response = await SearchMovieAPI.getMovies(movie);
-    dispatch(setMoviesCreator(response.data.results));
+    let next = true;
+    let page = 1;
+    let movies = [];
+    while (next) {
+        let result = await SearchMovieAPI.getMovies(movie, page, lang);
+        if (result.data.total_pages > page && page < 10) {
+            page++
+        } else {
+            next = false
+        }
+        movies = [...movies, ...result.data.results].filter((m) => m.release_date !== "" && m.release_date !== undefined && m.vote_average !== 0).filter((thing, index, self) =>
+            index === self.findIndex((t) => (
+                t.id === thing.id
+            ))
+        );
+    }
+    dispatch(onPageChangeCreator(1));
+    dispatch(setMoviesCreator([...movies]));
     dispatch(toggleIsFetching(false));
 };
-export const setGenres = () => (dispatch) => {
-    SearchMovieAPI.getGenres().then(response => {
-        dispatch(setGenresCreator(response.data.genres));
-    })
-};
-export const setMovieById = (movieId) => async (dispatch) => {
-    dispatch(toggleIsFetching(true));
-    let response = await SearchMovieAPI.getMovieById(movieId);
-    dispatch(setMovieByIdCreator(response.data));
-    dispatch(toggleIsFetching(false));
-};
-export const setPageSize = (pageSize) => (
-    {type: SET_PAGE_SIZE, pageSize}
-);
+
 
 export default searchMovieReducer;

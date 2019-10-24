@@ -1,11 +1,12 @@
 import React from "react";
-import logoIcon from "../../assets/images/LogoMakr_2bgndz.png"
 import css from "./Header.module.css"
-const Header=()=>{
+import Nav from "../Nav/Nav";
+import {NavLink} from "react-router-dom";
+
+const Header = (props) => {
     return <div className={css.header}>
-        <div className={css.logo}>
-            <img src={logoIcon} alt="logo-icon"/>
-        </div>
+        <NavLink  to='/popular' className={css.logo}><h1 tabIndex={10} className={css.color}>Just</h1><h1>Movie</h1></NavLink>
+        <Nav {...props}/>
     </div>
 };
 

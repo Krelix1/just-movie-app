@@ -1,16 +1,18 @@
 .star{
-  font-size: 15px;
-  color: #00000073;
+  color: rgba(255, 255, 255, 0.78);
   margin: 0 5px;
 }
 .starList{
+  font-size: 20px;
+}
+.bgc{
+  background-color: #222;
   position: absolute;
   top: 15px;
   left: 5px;
   padding: 0;
-  background-color: #ff212999;
 }
 .checked{
-  color:white;
+  color: rgba(255, 215, 0, 0.86);
   margin: 0 5px;
 }

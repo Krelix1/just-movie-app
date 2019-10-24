@@ -1,13 +1,39 @@
 .header {
   grid-area: h;
-  background-color: #ffffff;
+  background-color: #222;
   height: 70px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
-.logo img{
-height: 70px;
-}
-@media (max-width: 375px) {
 
+.logo {
+  margin-left: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color {
+  color: #eac600 !important;
+}
+.logo:hover .color,.logo:focus .color{
+  color: white !important;
+}
+.logo:hover h1,.logo:focus h1{
+  color: #eac600;
+}
+.logo h1 {
+  font-family: "Segoe Pro Black", sans-serif;
+  font-size: 50px;
+  color: white;
+}
+
+@media (max-width: 375px) {
+  .logo {
+    margin-left: 20px;
+  }
+
+  .logo h1 {
+    font-size: 40px;
+  }
 }

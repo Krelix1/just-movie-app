@@ -1,0 +1,32 @@
+.language{
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  height: 35px;
+  font-family: "Segoe Pro Bold",sans-serif;
+  font-size: 20px;
+  color: white;
+  text-transform: uppercase;
+  padding: 20px 20px 0 10px;
+}
+.language li{
+  color: white;
+  padding: 5px;
+  border: 2px solid white;
+  cursor: pointer;
+
+}
+.language li:focus , .language li:hover {
+  color: #eac600;
+  border: 2px solid #eac600;
+}
+@media (max-width: 1400px) {
+  .language{
+    font-size: 17px;
+  }
+}
+@media (max-width: 1080px) {
+  .language{
+    font-size: 20px;
+  }
+}

@@ -1,3 +1,123 @@
+nav {
+  display: flex;
+  justify-content: flex-end;
+  width: 80%;
+}
+.button{
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-family: "Segoe Pro Bold", sans-serif;
+  font-size: 20px;
+  border-bottom: 5px solid white;
+}
+.button:hover{
+  color: #eac600;
+  border-bottom: 4px solid #eac600;
+}
+.show {
+  display: flex;
+}
+
 .nav {
-  grid-area: n;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-right: 15px;
+}
+
+.css {
+  display: none;
+}
+
+.navLink {
+  margin: 0 30px;
+  box-sizing: border-box;
+  height: 70px;
+  border-bottom: 5px solid white;
+  font-family: "Segoe Pro Bold", sans-serif;
+  font-size: 20px;
+  padding-top: 10px;
+  align-items: center;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navLink svg {
+  margin-right: 10px;
+}
+
+.navLink:hover, .navLink:focus {
+  border-bottom: 4px solid #eac600;
+  color: #eac600;
+  transition: 0.4s;
+}
+
+.activeNavLink {
+  border-bottom: 4px solid #eac600;
+  color: #eac600;
+}
+.sign{
+  display: flex;
+}
+.sign a{
+  margin: 0 10px;
+}
+@media (max-width: 1400px) {
+  .navLink,.button{
+    font-size: 17px;
+  }
+}
+@media (max-width: 1200px) {
+  .navLink {
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .navLink {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navLink,.button{
+    font-size: 20px;
+  }
+  .nav {
+    border: 3px solid #ffff;
+    z-index: 10;
+    background: #222;
+    width: 200px;
+    height: 350px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    position: absolute;
+    right: -15px;
+    top: 70px;
+    align-items: flex-start;
+  }
+
+  .navLink {
+    width: 90%;
+  }
+
+  .language {
+    margin: 0 auto 20px auto;
+  }
+
+  .show {
+    display: none;
+  }
+
+  .menu {
+    padding-top: 20px;
+    color: white;
+    font-size: 35px;
+    margin-right: 30px;
+  }
+
 }
