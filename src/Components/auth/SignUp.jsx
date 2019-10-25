@@ -5,7 +5,6 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {withFirebase} from "react-redux-firebase";
-import {Login, LoginWithNetworks} from "../../redux/auth-reducer";
 
 
 let SignUp = (props) => {

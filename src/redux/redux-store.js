@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, compose, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from "redux-thunk";
 import searchMovieReducer from "./searchMovie-reducer";
 import {reducer as formReducer} from 'redux-form';

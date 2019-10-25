@@ -7,7 +7,7 @@
   font-size: 20px;
   color: white;
   text-transform: uppercase;
-  padding: 20px 20px 0 10px;
+  margin-top: 20px;
 }
 .language li{
   color: white;
@@ -27,6 +27,7 @@
 }
 @media (max-width: 1080px) {
   .language{
+    margin-top: 15px;
     font-size: 20px;
   }
 }

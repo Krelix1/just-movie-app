@@ -1,4 +1,3 @@
-import {createFirestoreInstance, getFirestore} from "redux-firestore";
 
 const LOGIN_LOGOUT = "LOGIN_LOGOUT";
 const ERROR = "ERROR";
@@ -50,6 +49,7 @@ export const SignUpUser = (email, password, firstName, lastName, ownProps) => (d
         .then(dispatch(SetIsAuth(true)))
         .catch(e => {
             dispatch(SetError(e.message));
+
         });
 };
 export const LoginWithNetworks = (credentials) => (dispatch, getState, getFirebase) => {

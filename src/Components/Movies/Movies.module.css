@@ -1,6 +1,5 @@
 .movieWrapper{
   width: 100%;
-  height: 100%;
 }
 .preSearch{
   font-family: "Segoe Pro Black",sans-serif;
@@ -14,6 +13,7 @@
 }
 .movieContent{
   width: 100%;
+  height: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -26,6 +26,12 @@
   }
 }
 @media (max-width: 1024px) {
+  .movieWrapper{
+    height: 100%;
+  }
+  .movieContent {
+    height: unset;
+  }
   .preSearch{
     left:15%;
   }

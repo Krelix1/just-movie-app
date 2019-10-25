@@ -1,0 +1,78 @@
+#menuButton {
+  visibility: hidden;
+  position: absolute;
+  z-index: -1111;
+}
+
+.menu {
+  color: white;
+  font-size: 30px;
+  margin: 20px;
+}
+
+.menuWrapper {
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-family: "Segoe Pro Bold", sans-serif;
+  background-color: #222222;
+  width: 150px;
+  height: 200px;
+  position: absolute;
+  z-index: 100;
+  top: 70px;
+  right: -100%;
+  display: flex;
+  transition: 0.25s ease-in-out;
+  box-shadow: 0 14px 28px rgb(0, 0, 0), 0 5px 28px rgb(0, 0, 0);
+}
+
+#menuButton:checked ~ .menuWrapper {
+  right: 0;
+}
+
+.initials {
+  width: 60px;
+  height: 60px;
+  background-color: #eac600;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 17px;
+  font-size: 25px;
+  box-sizing: border-box;
+}
+
+.navLink {
+  color: white;
+  font-family: "Segoe Pro Bold", sans-serif;
+  font-size: 18px;
+}
+
+.activeNavLink {
+
+}
+
+@media (max-width: 1080px) {
+  .menu label {
+    display: none;
+  }
+
+  .menuWrapper {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-family: "Segoe Pro Bold", sans-serif;
+    background-color: #222222;
+    width: 150px;
+    height: 200px;
+    position: unset;
+    z-index: 0;
+    top: unset;
+    right: unset;
+    display: flex;
+    transition: 0.25s ease-in-out;
+    box-shadow: none;
+  }
+}

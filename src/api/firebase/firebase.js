@@ -16,7 +16,8 @@ firebase.initializeApp(fbConfig);
 firebase.firestore();
 
 export const rrfConfig = {
-    userProfile: 'users'
+    userProfile: 'users',
+    useFirestoreForProfile:true
 };
 
 
