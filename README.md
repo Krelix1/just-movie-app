@@ -1,39 +1,39 @@
-#[JustMovie](https://justmovie-df8c3.firebaseapp.com/popular) 
+# [JustMovie](https://justmovie-df8c3.firebaseapp.com/popular) 
 
 Single web page application for searching films, made with [create-react-app](https://github.com/facebook/create-react-app) to show small part of my skills.
-##`react`
+## `react`
 
 Used as a main library to create my SPA.
 
-##`redux`
+## `redux`
 
 Used for a state management
 
-##`react-router-dom`
+## `react-router-dom`
 
 Used for a routing in app
 
-##`axios`
+## `axios`
 
 Used for making http requests
 
-##`redux-thunk`
+## `redux-thunk`
 
 Used for async actions
 
-##`react-css-modules`
+## `react-css-modules`
 
 Used for styling components
 
-###[TheMovieDB API](https://developers.themoviedb.org/3)
+### [TheMovieDB API](https://developers.themoviedb.org/3)
 
 Used for getting movies
 
-###[Firebase](https://firebase.google.com/)
+### [Firebase](https://firebase.google.com/)
 
 Used for authentication, storage of the language selected by the user and hosting the app
 
-##And other
+## And other
 
 ...approaches (as a `pure function`,`hooks`,`...`) you can see in my app, just look in :)
 
