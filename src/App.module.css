@@ -40,31 +40,24 @@ body::-webkit-scrollbar-thumb,.app_wrapper_content::-webkit-scrollbar-thumb {
   transform: translate(-50%,-50%);
 }
 @media (max-width: 1024px) {
+  body{
+    overflow-y: hidden;
+  }
   .app_wrapper_content {
+    position: relative;
     overflow-y: auto;
+    overflow-x: hidden;
+    height: 90vh;
+  }
+  .app_wrapper{
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
     height: 100vh;
-  }
-  .app_wrapper{
     display: flex;
     flex-direction: column;
     background-position: center;
     background-size: auto;
   }
 }
-@media (max-width: 768px) {
-  .app_wrapper{
-    display: flex;
-    flex-direction: column;
-    background-position: center;
-    background-size: auto;
-  }
-}
-@media (max-width: 375px) {
-  .app_wrapper{
-    display: flex;
-    flex-direction: column;
-    background-position: center;
-    background-size: auto;
-  }
 
-}

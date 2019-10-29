@@ -67,10 +67,6 @@
   .poster{
     display: none;
   }
-  .movieDescriptionWrapper {
-    height: 100%;
-  }
-
   .aboutMovie {
     width: 100%;
     align-items: center;
@@ -78,7 +74,6 @@
     justify-items: center;
     text-align: center;
   }
-
   .overview {
     max-height: 40%;
     overflow: auto;

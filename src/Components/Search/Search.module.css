@@ -8,7 +8,7 @@
   color: #ffffff;
   line-height: 27px;
   background-color: rgba(0, 0, 0, 0);
-  border: 2px solid white;
+  border: 3px solid white;
 }
 
 .input:focus, .input:hover {
@@ -30,27 +30,35 @@
 }
 
 .filter {
+  box-sizing: border-box;
   font-family: "Segoe Pro Bold", Arial, sans-serif;
   font-size: 20px;
   text-transform: uppercase;
   color: white;
-  margin: 35px 0 5px;
+  margin: 35px 0 15px;
   text-align: center;
 }
 
 .filters {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
   border: 3px solid white;
 }
 
 .button {
-  margin: 10px 0;
+  margin: 20px;
+  display: flex;
+  align-self: center;
   font-family: "Segoe Pro Bold", Arial, sans-serif;
   font-size: 20px;
   color: white;
   border: 3px solid white;
   background: transparent;
+}
+.filtersList{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .button:hover, .button:focus {
@@ -99,46 +107,38 @@ input[type="radio"]:checked:before {
   font-size: 35px;
 }
   .filter {
-    margin-top: 0;
     display: none;
+  }
+  .filters{
+    position: absolute;
+    top: 50px;
+    background-color: #222222;
+    z-index: 1;
   }
 
   .form {
+    position: relative;
     margin: 0;
-    width: 100%;
+    width: 100vw;
   }
 
   .input {
+    width:90%;
     margin: 0;
-    height: 35px;
-    width: 99.4vw;
-    font-size: 30px;
+    height: 30px;
+    font-size: 25px;
     border: 3px solid white;
     font-family: "Segoe Pro Regular", Arial, sans-serif;
   }
-}
-
-@media (max-width: 768px) {
-  .input {
-    width: 99.2vw;
+  .input::placeholder {
+    padding-top: 4px;
+    text-align: center;
   }
-}
-
-@media (max-width: 450px) {
-  .input {
-    width: 98.5vw;
-  }
-
-}
-
-@media (max-width: 375px) {
-  .input {
-    width: 98.5vw;
-  }
-}
-
-@media (max-width: 325px) {
-  .input {
-    width: 98vw;
+  .button{
+    align-self: center;
+    justify-self: center;
+    margin: 20px auto;
+    height: 40px;
+    width: 100px;
   }
 }

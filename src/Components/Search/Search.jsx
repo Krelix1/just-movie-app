@@ -5,9 +5,9 @@ import {withRouter} from "react-router-dom";
 import Filter from "../common/Filter/Filter";
 
 let Search = (props) => {
-    let [show, setShow] = useState(window.innerWidth > 1080);
+    let [show, setShow] = useState(false);
     let onChangeShow = () => {
-        window.innerWidth < 1080 && show ? setShow(false) : setShow(true);
+         show ? setShow(false) : setShow(true);
     };
     let onSearchMovie = (values) => {
         props.history.push(`/search/${values.search}`);
@@ -21,19 +21,20 @@ let Search = (props) => {
 };
 
 let searchForm = (props) => {
-    return <form onSubmit={props.handleSubmit} className={css.form}>
+    return <form onSubmit={props.handleSubmit} className={css.form} >
         <Field component={"input"} type={'text'} name={"search"} className={css.input}
                placeholder={props.language === "en-US" ? "Search" : "Поиск"} autoComplete={"off"}
-               onClick={props.onChangeShow}/>
+               onClick={props.onChangeShow} />
         <h3 className={props.show ? css.filter : css.hidden}>{props.language === "en-US" ? "Filters" : "Фильтры"}</h3>
         <div className={props.show ? css.filters : css.hidden}>
-            <Filter name={"date"} rus={"Дата"} lang={props.language}/>
-            <Filter name={"vote"} rus={"Оценка"} lang={props.language}/>
-            <Filter name={"title"} rus={"Название"} lang={props.language}/>
-            <Filter name={"popularity"} rus={"популярность"} lang={props.language}/>
+            <div className={css.filtersList}><Filter name={"date"} rus={"Дата"} lang={props.language}/>
+                <Filter name={"vote"} rus={"Оценка"} lang={props.language}/>
+                <Filter name={"title"} rus={"Название"} lang={props.language}/>
+                <Filter name={"popularity"} rus={"популярность"} lang={props.language}/></div>
+            <button className={props.show ? css.button : css.hidden} type={"submit"}
+                    onClick={props.onChangeShow}>{props.language === "en-US" ? "Search" : "Поиск"}</button>
         </div>
-        <button className={props.show ? css.button : css.hidden}
-                onClick={props.handleSubmit}>{props.language === "en-US" ? "Search" : "Поиск"}</button>
+
     </form>
 };
 

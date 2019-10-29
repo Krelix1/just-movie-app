@@ -27,7 +27,7 @@
 }
 @media (max-width: 1024px) {
   .movieWrapper{
-    height: 100%;
+    height: auto;
   }
   .movieContent {
     height: unset;
@@ -48,13 +48,16 @@
   }
 }
 @media (max-width: 450px) {
+  .movieWrapper{
+    height: auto;
+  }
   .preSearch{
     left:0;
   }
 }
 @media (max-width: 375px) {
   .movieWrapper{
-    height: 100%;
+    height: auto;
   }
   .movieContent{
     padding-bottom: 40px;

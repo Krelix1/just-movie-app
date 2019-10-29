@@ -21,7 +21,7 @@ ReactDOM.render(
             </Provider>
         </ReactReduxFirebaseProvider>
     </BrowserRouter>, document.getElementById('root'));
-serviceWorker.register();
+serviceWorker.unregister();
 
 
 window.state = store.getState();

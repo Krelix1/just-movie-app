@@ -5,7 +5,7 @@ import Paginator from "../common/Paginator/Paginator";
 import Preloader from "../common/Preloader/Preloader";
 
 function Movies({pageSize, currentPage=1, totalMoviesCount,movies, ...props}) {
-    if (movies.length === 0) return <h1 className={css.preSearch}>A lot of movies wait you!</h1>;
+    if (movies.length === 0) return <h1 className={css.preSearch}>{props.language==="en-US"?"A lot of movies wait you!":"Множество фильмов ждут вас!"}</h1>;
     if (props.isFetching) return <Preloader className={css.preloader}/>;
     return <div className={css.movieWrapper}>
         <div className={css.movieContent}>{

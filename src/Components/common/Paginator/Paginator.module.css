@@ -45,11 +45,7 @@
 }
 @media (max-width: 768px) {
   .paginator{
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 375px) {
-  .paginator{
+    position: relative;
+    margin: 0 auto 100px;
   }
 }

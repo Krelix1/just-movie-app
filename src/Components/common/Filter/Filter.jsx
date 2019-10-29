@@ -9,7 +9,7 @@ const Filter = ({name, lang, rus}) => {
         <span>{lang === "en-US" ? name : rus}</span>
         <div className={css.dateInput}>
             <div className={css.up} tabIndex={8}>
-                <label htmlFor={"input1"}>
+                <label >
                     <Field component={"input"} type={'radio'} name={"filter"}
                            value={name + "Down"}
                            className={css.radio}/>

@@ -4,13 +4,17 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/.firebaserc
+/database.rules.json
+/firebase.json
+/firestore.indexes.json
+/firestore.rules
 # testing
 /coverage
 
 # production
 /build
-
+/dist
 # misc
 .DS_Store
 .env.local
