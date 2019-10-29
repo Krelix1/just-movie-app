@@ -1,8 +1,8 @@
 #[JustMovie](https://justmovie-df8c3.firebaseapp.com/popular) 
 Single web page application for searching films, made with [create-react-app](https://github.com/facebook/create-react-app) to show small part of my skills.
-##`React`
+##`react`
 Used as a main library to create my SPA.
-##`Redux`
+##`redux`
 Used for a state management
 ##`react-router-dom`
 Used for a routing in app
