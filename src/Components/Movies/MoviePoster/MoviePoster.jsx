@@ -6,10 +6,9 @@ import {NavLink} from "react-router-dom";
 import Genres from "../../common/Genres/Genres";
 
 const MoviePoster = ({movie, genres,language, ...props}) => {
-    let imgpath = (movie.poster_path) ? `https://image.tmdb.org/t/p/w185${movie.poster_path}` : defPoster;
-
+    let imgPath = (movie.poster_path) ? `https://image.tmdb.org/t/p/w185${movie.poster_path}` : defPoster;
     return <NavLink to={`/movie/${movie.id}`} className={css.movie}>
-        <img src={imgpath} alt={movie.title}/>
+        <img src={imgPath} alt={movie.title}/>
         <Rating  bgc={true} rating={movie.vote_average}/>
         <div className={css.movieDescription}>
             <div className={css.info}>

@@ -4,13 +4,13 @@ import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faClock, faFireAlt, faPlay, faStar, faUserPlus,faSignInAlt} from '@fortawesome/free-solid-svg-icons'
 import Language from "../common/Language/Language";
-import ProfileMenuContainer from "../common/ProfileMenu/ProfileMenuContainer";
+import ProfileMenuContainer from "../ProfileMenu/ProfileMenuContainer";
 
 
 function Nav({language, ...props}) {
     let [show, setShow] = useState(false);
     let toggleShow = () => {
-        if (window.innerWidth < 1080) show ? setShow(false) : setShow(true);
+        if (window.innerWidth < 1024) show ? setShow(false) : setShow(true);
     };
     return <nav>
         <div className={css.menu} onClick={toggleShow}><FontAwesomeIcon icon={faBars}/></div>

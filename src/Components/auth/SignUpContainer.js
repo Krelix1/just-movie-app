@@ -7,7 +7,8 @@ import {SignUpUser} from "../../redux/auth-reducer";
 let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     auth: state.firebase.auth,
-    error: state.auth.error
+    error: state.auth.error,
+    language:state.firebase.profile.language?state.firebase.profile.language:state.app.language
 });
 const SignUpContainer = compose(connect(mapStateToProps, {SignUpUser}), withFirebase,withFirestore)(SignUp);
 export default SignUpContainer;

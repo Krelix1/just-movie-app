@@ -5,6 +5,7 @@ import {setMovieById} from "../../../redux/movie-reducer";
 import Preloader from "../../common/Preloader/Preloader";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
+import {withFirestore} from "react-redux-firebase";
 
 
 class MoviesDescriptionContainer extends React.Component {
@@ -27,7 +28,8 @@ const mapStateToProps = (state) => ({
     isFetching: state.movie.isFetching,
     movie: state.movie.movieById,
     video: state.movie.video,
-    language: state.movie.language
+    language:state.firebase.profile.language?state.firebase.profile.language:state.app.language
+
 });
 
-export default compose(withRouter, connect(mapStateToProps, {setMovieById}))(MoviesDescriptionContainer);
+export default compose(withRouter,withFirestore, connect(mapStateToProps, {setMovieById}))(MoviesDescriptionContainer);

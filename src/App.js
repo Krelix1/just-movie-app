@@ -4,7 +4,7 @@ import './App.module.css';
 import SearchContainer from "./Components/Search/SearchContainer";
 import {connect} from "react-redux";
 import MoviesContainer from "./Components/Movies/MoviesContainer";
-import {setGenres, setPageSize} from "./redux/app-reducer";
+import {setGenres, setLanguageCreator, setPageSize} from "./redux/app-reducer";
 import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import MoviesDescriptionContainer from "./Components/Movies/MovieDescription/MoviesDescriptionContainer";
 import NavMovieContainer from "./Components/Movies/NavMovie/NavMovieContainer";
@@ -13,6 +13,7 @@ import {compose} from "redux";
 import SignInContainer from "./Components/auth/SignInContainer";
 import Preloader from "./Components/common/Preloader/Preloader";
 import SignUpContainer from "./Components/auth/SignUpContainer";
+import {withFirestore} from "react-redux-firebase";
 
 
 class App extends Component {
@@ -61,6 +62,11 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
     language: state.app.language,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
 });
-export default compose(connect(mapStateToProps, {setGenres, setPageSize}), withRouter)(App);
+
+export default compose(connect(mapStateToProps, {
+    setGenres,
+    setPageSize,
+    setLanguageCreator
+}), withRouter, withFirestore)(App);

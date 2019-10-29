@@ -1,4 +1,4 @@
-#menuButton {
+.menuButton {
   visibility: hidden;
   position: absolute;
   z-index: -1111;
@@ -28,32 +28,41 @@
   box-shadow: 0 14px 28px rgb(0, 0, 0), 0 5px 28px rgb(0, 0, 0);
 }
 
-#menuButton:checked ~ .menuWrapper {
+.menuButton:checked ~ .menuWrapper {
   right: 0;
 }
 
-.initials {
-  width: 60px;
-  height: 60px;
+.avatar {
+  display: flex;
+  width: 90px;
+  height: 90px;
   background-color: #eac600;
   border-radius: 50%;
   text-align: center;
-  padding-top: 17px;
-  font-size: 25px;
-  box-sizing: border-box;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 40px;
 }
+.avatar img{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
 
+}
 .navLink {
   color: white;
   font-family: "Segoe Pro Bold", sans-serif;
-  font-size: 18px;
+  font-size: 20px;
+  cursor: pointer;
 }
-
+.navLink:hover{
+  color: #eac600;
+}
 .activeNavLink {
 
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1024px) {
   .menu label {
     display: none;
   }

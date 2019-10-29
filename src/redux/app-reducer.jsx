@@ -52,6 +52,12 @@ export const setGenresCreator = (genres) => (
 export const setLanguageCreator = (language) => (
     {type: SET_LANGUAGE, language}
 );
+export const SetLanguage = (language,userId,ownProps)=>(dispatch)=>{
+    userId && ownProps.firestore.collection('users').doc(userId).update({
+        language:language
+    });
+    dispatch(setLanguageCreator(language));
+};
 
 
 export default appReducer;

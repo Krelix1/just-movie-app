@@ -29,6 +29,12 @@ export const SearchMovieAPI={
     },
     getNowPlayingMovie(page,lang){
         return instance.get(`movie/now_playing?api_key=${apiKey}&language=${lang}&page=${page}`)
+    },
+    createAccount(){
+        return instance.get(`authentication/token/new?api_key=${apiKey}`)
+    },
+    createSession(request_token){
+        return instance.post(`authentication/session/new?api_key=${apiKey}`,{"request_token": `${request_token}`})
     }
 };
 

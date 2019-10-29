@@ -5,6 +5,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import {compose} from "redux";
 import {withRouter} from "react-router-dom";
 import {onPopularPageChangeCreator, setMovie} from "../../../redux/navMovie-reducer";
+import {withFirestore} from "react-redux-firebase";
 
 class NavMovieContainer extends React.Component {
     componentDidMount(props) {
@@ -27,7 +28,7 @@ const mapStateToProps = (state) => ({
     pageSize: state.app.pageSize,
     currentPage: state.nav.currentPage,
     totalMoviesCount: state.nav.totalMoviesCount,
-    language:state.nav.language
+    language:state.firebase.profile.language?state.firebase.profile.language:state.app.language
 });
 const mapDispatchToProps = (dispatch) => ({
     setMovie: (type,lang) => {
@@ -36,6 +37,6 @@ const mapDispatchToProps = (dispatch) => ({
     onPageChange: (currentPage) => {
         dispatch(onPopularPageChangeCreator(currentPage));
     }
-})
+});
 
-export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(NavMovieContainer);
+export default compose(withRouter,withFirestore, connect(mapStateToProps, mapDispatchToProps))(NavMovieContainer);

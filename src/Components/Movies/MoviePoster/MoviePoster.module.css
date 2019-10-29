@@ -97,13 +97,14 @@
     visibility: hidden;
     opacity: 0;
   }
-
 }
-
-@media (max-width: 768px) {
-
-}
-
-@media (max-width: 375px) {
-
+@media (max-width: 330px) {
+  .movie {
+    width: 200px;
+    margin: 20px 10px;
+  }
+  .movie img {
+    width: 200px;
+    height: 283px;
+  }
 }

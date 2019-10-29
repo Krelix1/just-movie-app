@@ -5,6 +5,7 @@ import {onPageChangeCreator, searchMovie} from "../../redux/searchMovie-reducer"
 import Preloader from "../common/Preloader/Preloader";
 import {compose} from "redux";
 import {withRouter} from "react-router-dom";
+import {withFirestore} from "react-redux-firebase";
 
 class MoviesContainer extends React.Component {
     componentWillMount() {
@@ -28,9 +29,9 @@ const mapStateToProps = (state) => ({
     currentPage: state.search.currentPage,
     totalMoviesCount: state.search.totalMoviesCount,
     isFetching: state.search.isFetching,
-    language:state.search.language,
     filters: state.search.filters,
-    currentFilter: state.search.currentFilter
+    currentFilter: state.search.currentFilter,
+    language:state.firebase.profile.language?state.firebase.profile.language:state.app.language
 });
 const mapDispatchToProps = (dispatch) => ({
     onPageChange: (currentPage) => {
@@ -41,4 +42,4 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(MoviesContainer);
+export default compose(withRouter,withFirestore, connect(mapStateToProps, mapDispatchToProps))(MoviesContainer);

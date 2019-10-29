@@ -4,14 +4,12 @@ import {SearchMovieAPI} from "../api/moviedbAPI/Mdb";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const SET_MOVIE = "SET_MOVIE";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
-const SET_LANGUAGE = "SET_LANGUAGE";
 
 let initialState = {
     movie: [],
     isFetching: false,
     currentPage: 1,
-    totalMoviesCount: 0,
-    language:"en-US"
+    totalMoviesCount: 0
 };
 
 const navMovieReducer = (state = initialState, action) => {
@@ -30,11 +28,6 @@ const navMovieReducer = (state = initialState, action) => {
                         t.id === thing.id
                     ))
                 ).length
-            };
-        case SET_LANGUAGE:
-            return {
-                ...state,
-                language: action.language
             };
         case SET_CURRENT_PAGE:
             return {
@@ -62,9 +55,6 @@ export const setMovieCreator = (movie) => (
     {type: SET_MOVIE, movie}
 );
 
-export const setLanguageNavCreator = (language) => (
-    {type: SET_LANGUAGE, language}
-);
 export const setMovie = (type,lang) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
     let next = true;
@@ -73,17 +63,17 @@ export const setMovie = (type,lang) => async (dispatch) => {
     if (type === "popular") {
         while (next) {
             let result = await SearchMovieAPI.getPopularMovie(page,lang);
-            if (result.data.total_pages > page &&  page <20) {
+            if (result.data.total_pages > page &&  page <15) {
                 page++
-            }else{next=false};
+            }else{next=false}
             movies = [...movies, ...result.data.results];
         }
     } else if (type === "top") {
         while (next) {
             let result = await SearchMovieAPI.getTopMovie(page,lang);
-            if (result.data.total_pages > page &&  page <20) {
+            if (result.data.total_pages > page &&  page <15) {
                 page++
-            }else{next=false};
+            }else{next=false}
             movies = [...movies, ...result.data.results];
         }
     } else if (type === "coming") {
@@ -91,7 +81,7 @@ export const setMovie = (type,lang) => async (dispatch) => {
             let result = await SearchMovieAPI.getUpComingMovie(page,lang);
             if (result.data.total_pages > page &&  page <10) {
                 page++
-            }else{next=false};
+            }else{next=false}
             movies = [...movies, ...result.data.results];
         }
     } else if (type === "now_playing") {
@@ -99,14 +89,13 @@ export const setMovie = (type,lang) => async (dispatch) => {
             let result = await SearchMovieAPI.getNowPlayingMovie(page,lang);
             if (result.data.total_pages > page &&  page <10) {
                 page++
-            }else{next=false};
+            }else{next=false}
             movies = [...movies, ...result.data.results];
         }
     }
     dispatch(onPopularPageChangeCreator(1));
     dispatch(setMovieCreator(movies));
     dispatch(toggleIsFetching(false));
-    page=0;
 };
 
 

@@ -19,6 +19,7 @@ let SignUp = (props) => {
         );
     };
     return props.auth.uid ? <Redirect to={'/popular'}/> : <ReduxLoginForm onSubmit={fireLogin}/>;
+
 };
 
 const SignUpForm = (props) => {

@@ -3,14 +3,12 @@ import {SearchMovieAPI} from "../api/moviedbAPI/Mdb";
 const SET_MOVIES = "SET_MOVIES";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
-const SET_LANGUAGE = "SET_LANGUAGE";
 const SET_FILTERS = "SET_FILTERS";
 
 let initialState = {
     movies: [],
     isFetching: false,
     currentPage: 1,
-    language: "en-US",
     filters: {
         dateDown: function (a, b) {
             return b.release_date.split('-')[0] - a.release_date.split('-')[0] + b.release_date.split('-')[1] - a.release_date.split('-')[1] + b.release_date.split('-')[2] - a.release_date.split('-')[2]
@@ -47,11 +45,7 @@ let initialState = {
 const searchMovieReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case SET_LANGUAGE:
-            return {
-                ...state,
-                language: action.language
-            };
+
         case SET_FILTERS:
             return {
                 ...state,
@@ -94,9 +88,7 @@ export const setMoviesCreator = (movies) => (
 export const toggleIsFetching = (isFetching) => (
     {type: TOGGLE_IS_FETCHING, isFetching}
 );
-export const setLanguageSearchCreator = (language) => (
-    {type: SET_LANGUAGE, language}
-);
+
 export const searchMovie = (movie, lang) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
     let next = true;

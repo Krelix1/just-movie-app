@@ -3,14 +3,12 @@ import {SearchMovieAPI} from "../api/moviedbAPI/Mdb";
 
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const SET_MOVIE_BY_ID = "SET_MOVIE_BY_ID";
-const SET_LANGUAGE = "SET_LANGUAGE";
 
 let initialState = {
     movieById: {},
     video:"",
     isFetching: false,
-    genres:[],
-    language:"en-US"
+    genres:[]
 };
 
 const movieReducer = (state = initialState, action) => {
@@ -22,11 +20,6 @@ const movieReducer = (state = initialState, action) => {
                 movieById: action.movie,
                 video: (action.video[0])?action.video[0].key:null,
                 genres: action.movie.genres
-            };
-        case SET_LANGUAGE:
-            return {
-                ...state,
-                language: action.language
             };
         case TOGGLE_IS_FETCHING:
             return {
@@ -43,9 +36,6 @@ export const toggleIsFetching = (isFetching) => {
 };
 export const setMovieByIdCreator = (movie, video) => (
     {type: SET_MOVIE_BY_ID, movie, video}
-);
-export const setLanguageMovieCreator = (language) => (
-    {type: SET_LANGUAGE, language}
 );
 
 export const setMovieById = (movieId,lang) => async (dispatch) => {

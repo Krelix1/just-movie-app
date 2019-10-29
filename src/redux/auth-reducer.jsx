@@ -1,11 +1,11 @@
-
 const LOGIN_LOGOUT = "LOGIN_LOGOUT";
 const ERROR = "ERROR";
 
 
 let initialState = {
     isAuth: false,
-    error: null
+    error: null,
+    token:null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -27,6 +27,7 @@ const authReducer = (state = initialState, action) => {
 export const SetIsAuth = (isAuth) => (
     {type: LOGIN_LOGOUT, isAuth}
 );
+
 export const SetError = (error) => (
     {type: ERROR, error}
 );
@@ -38,25 +39,25 @@ export const Login = (credentials) => (dispatch, getState, getFirebase) => {
         dispatch(SetError("Ooops. Something wrong!"));
     });
 };
-export const SignUpUser = (email, password, firstName, lastName, ownProps) => (dispatch, getState, getFirebase) => {
+export const SignUpUser = (email, password, firstName, lastName, ownProps) => async (dispatch, getState, getFirebase) => {
     let firebase = getFirebase();
     firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((response)=>ownProps.firestore.collection('users').doc(response.user.uid).set({
+        .then((response) => ownProps.firestore.collection('users').doc(response.user.uid).set({
             firstName: firstName,
             lastName: lastName,
             initials: firstName[0] + lastName[0]
         }))
         .then(dispatch(SetIsAuth(true)))
-        .catch(e => {
-            dispatch(SetError(e.message));
-
-        });
+        .catch(e =>{
+        dispatch(SetError(e.message));
+    });
 };
 export const LoginWithNetworks = (credentials) => (dispatch, getState, getFirebase) => {
     let firebase = getFirebase();
     firebase.login(credentials).then(() => {
-        dispatch(SetIsAuth(true));
-    });
+            dispatch(SetIsAuth(true));
+        }
+    );
 };
 export const Logout = () => (dispatch, getState, getFirebase) => {
     let firebase = getFirebase();
@@ -64,5 +65,4 @@ export const Logout = () => (dispatch, getState, getFirebase) => {
         dispatch(SetIsAuth(false));
     });
 };
-
 export default authReducer;
