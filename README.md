@@ -1,3 +1,5 @@
+![React](https://miro.medium.com/max/3600/1*Xt3l-_54wuxdsHpiolGP3g.jpeg)
+
 # [JustMovie](https://justmovie-df8c3.firebaseapp.com/popular) 
 
 Single web page application for searching films, made with [create-react-app](https://github.com/facebook/create-react-app) to show small part of my skills.
