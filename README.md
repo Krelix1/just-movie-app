@@ -37,6 +37,6 @@ Used for authentication, storage of the language selected by the user and hostin
 
 ## And other
 
-...approaches (as a `pure function`,`hooks`,`...`) you can see in my app, just look in :)
+...technology (as a `pure function`,`hooks`,`...`) you can see in my app, just look in :)
 
 P.S. I'm junior front-end developer, so i can make some `new Error` or can use outdated approaches, but i want to become better and i hope you wil help me!
